@@ -678,7 +678,8 @@ body._lock {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   pointer-events: none;
-  display: none;
+  -webkit-filter: blur(75px);
+          filter: blur(75px);
 }
 
 .popup {
@@ -716,7 +717,6 @@ body._lock {
 
 .popup__body {
   overflow: hidden;
-  min-height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
