@@ -271,7 +271,7 @@ $(document).ready(function(){
 			cursor.addClass('_disable');
 			cursor.css({
 				'left': x + width,
-				'top': y + height,
+				'top': y + height + $('.popup').scrollTop(),
 			});
 			$('.popup').off('mousemove');
 			line.css({
