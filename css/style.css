@@ -357,6 +357,7 @@ body {
 }
 
 .burger__wrapper i {
+  z-index: 6;
   position: absolute;
   background: #1e1e1e;
 }

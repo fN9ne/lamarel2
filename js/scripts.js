@@ -16,21 +16,31 @@ $(document).ready(function(){
 	$('.burger__btn').on('click', function() {
 		$(this).toggleClass('_active');
 		$('.burger__content').toggleClass('_active');
-		$('.header').toggleClass('_active-burger')
+		$('.header').toggleClass('_active-burger');
+		if ($('.header').hasClass('_active-burger')) {
+			$('body').on('mousemove', function(e) {
+				let pos = $('.burger__big-word').offset();
+				let width = $('.burger__big-word').width();
+				let height = $('.burger__big-word').height();
+				let X = e.pageX;
+				let Y = e.pageY;
+				let x = pos.left;
+				let y = pos.top;
+				x = X - x;
+				y = Y - y;
+				if (x > width + 100) x = width + 100;
+				if (x < - 100) x = -100;
+				if (y > height + 100) y = height + 100;
+				if (y < -100) y = -100;
+				$(this).find('span').css({
+					'left': x,
+					'top': y,
+					'visibility': 'visible',
+					'opacity': 1,
+				});
+			})
+		} else {
+			$('body').unbind('mousemove');
+		}
 	});
-	$('.burger__content').on('mousemove', function(e) {
-		let pos = $('.burger__big-word').offset();
-		let X = e.pageX;
-		let Y = e.pageY;
-		let x = pos.left;
-		let y = pos.top;
-		x = X - x;
-		y = Y - y;
-		$(this).find('span').css({
-			'left': x,
-			'top': y,
-			'visibility': 'visible',
-			'opacity': 1,
-		});
-	})
 });
