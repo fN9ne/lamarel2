@@ -223,4 +223,53 @@ $(document).ready(function(){
 			$('.header').removeClass('_blur');
 		}
 	});
+	$('.link-popup').on('click', function() {
+		let link = $(this).attr('data-popup');
+		$(`.${link}`).addClass('_active');
+	});
+	$('.popup').on('mousemove', function(e) {
+		popupCursor($(this), e);
+	});
+	$('.popup__input').find('input, textarea').on('focus blur input', function() {
+		let cursor = $('.popup__cursor');
+		let pos = $(this).offset();
+		let x = pos.left;
+		let y = pos.top;
+		let width = parseInt($(this).css('width'));
+		let height = parseInt($(this).css('height'));
+		if ($(this).is(':focus')) {
+			$(this).parent().addClass('_active');
+			cursor.addClass('_disable');
+			cursor.css({
+				'left': x + width,
+				'top': y + height,
+			});
+			$('.popup').off('mousemove');
+		} else {
+			$(this).parent().removeClass('_active');
+			cursor.removeClass('_disable');
+			$('.popup').on('mousemove', function(e) {
+				popupCursor($(this), e);
+			});
+		}
+	});
+	function popupCursor(current, e) {
+		let pos = current.offset();
+		let cursor = $('.popup__cursor');
+		let cursor_width = parseInt(cursor.css('width'));
+		let X = e.pageX;
+		let Y = e.pageY;
+		let x = pos.left;
+		let y = pos.top;
+		x = X - x;
+		y = Y - y;
+		if (x < cursor_width) x = cursor_width;
+		if (x > $(document).width() - cursor_width) x = $(document).width() - cursor_width;
+		if (y < cursor_width) y = cursor_width;
+		if (y > $(document).height() - cursor_width) y = $(document).height() - cursor_width;
+		cursor.css({
+			'left': x,
+			'top': y,
+		});
+	}
 });
