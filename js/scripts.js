@@ -18,14 +18,8 @@ $(document).ready(function(){
 		$('.burger__content').toggleClass('_active');
 		$('.header').toggleClass('_active-burger')
 	});
-	$('.burger__big-word').on('mouseleave', function() {
-		$(this).find('span').css({
-			'visibility': 'hidden',
-			'opacity': 1,
-		});
-	});
-	$('.burger__big-word').on('mousemove', function(e) {
-		let pos = $(this).offset();
+	$('.burger__content').on('mousemove', function(e) {
+		let pos = $('.burger__big-word').offset();
 		let X = e.pageX;
 		let Y = e.pageY;
 		let x = pos.left;
