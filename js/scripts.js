@@ -204,7 +204,7 @@ $(document).ready(function(){
 				if (x < - 100) x = -100;
 				if (y > height + 100) y = height + 100;
 				if (y < -100) y = -100;
-				$(this).find('span').css({
+				$('.burger__big-word').find('span').css({
 					'left': x,
 					'top': y,
 					'visibility': 'visible',
@@ -230,46 +230,95 @@ $(document).ready(function(){
 	$('.popup').on('mousemove', function(e) {
 		popupCursor($(this), e);
 	});
-	$('.popup__input').find('input, textarea').on('focus blur input', function() {
-		let cursor = $('.popup__cursor');
-		let pos = $(this).offset();
-		let x = pos.left;
-		let y = pos.top;
-		let width = parseInt($(this).css('width'));
-		let height = parseInt($(this).css('height'));
-		if ($(this).is(':focus')) {
-			$(this).parent().addClass('_active');
-			cursor.addClass('_disable');
-			cursor.css({
-				'left': x + width,
-				'top': y + height,
-			});
-			$('.popup').off('mousemove');
-		} else {
-			$(this).parent().removeClass('_active');
-			cursor.removeClass('_disable');
-			$('.popup').on('mousemove', function(e) {
-				popupCursor($(this), e);
-			});
-		}
+	$('.popup__close').click(function() {
+		$(this).closest('.popup').removeClass('_active');
 	});
-	function popupCursor(current, e) {
-		let pos = current.offset();
-		let cursor = $('.popup__cursor');
-		let cursor_width = parseInt(cursor.css('width'));
+	$('.popup').find('button').on('click', function(e) {
+		e.preventDefault();
+		let pos = $(this).offset();
 		let X = e.pageX;
 		let Y = e.pageY;
 		let x = pos.left;
 		let y = pos.top;
 		x = X - x;
 		y = Y - y;
-		if (x < cursor_width) x = cursor_width;
-		if (x > $(document).width() - cursor_width) x = $(document).width() - cursor_width;
-		if (y < cursor_width) y = cursor_width;
-		if (y > $(document).height() - cursor_width) y = $(document).height() - cursor_width;
-		cursor.css({
-			'left': x,
+		$(this).append('<span></span>');
+		let rise = $(this).find('span');
+		rise.css({
 			'top': y,
+			'left': x,
 		});
+	});
+	$('.popup__close').on('mouseenter', function() {
+		$('.popup__cursor').addClass('_close');
+	});
+	$('.popup__close').on('mouseleave', function() {
+		$('.popup__cursor').removeClass('_close');
+	});
+	$('.popup__input').find('input, textarea').on('focus blur input', function() {
+		let line = $(this).closest('.popup__input').find('.popup__input-line');
+		let cursor = $('.popup__cursor');
+		let pos = $(this).offset();
+		let x = pos.left;
+		let y = pos.top;
+		let width = parseInt($(this).css('width'));
+		let height = parseInt($(this).css('height'));
+		let text = $(this).val();
+		if (!text) text = '';
+		let width_text = getTextWidth(text, $(this).css('font'));
+		if ($(this).is(':focus')) {
+			$(this).closest('.popup__input').addClass('_active');
+			cursor.addClass('_disable');
+			cursor.css({
+				'left': x + width,
+				'top': y + height,
+			});
+			$('.popup').off('mousemove');
+			line.css({
+				'width': width_text,
+				'opacity': 1,
+				'visibility': 'visible',
+			});
+		} else {
+			$(this).closest('.popup__input').removeClass('_active');
+			cursor.removeClass('_disable');
+			$('.popup').on('mousemove', function(e) {
+				popupCursor($(this), e);
+			});
+		}
+	});
+	for (let i = 0; i < $('.popup__input').length; i++) {
+		let item = $('.popup__input').eq(i);
+		let input = item.find('input, textarea');
+		let placeholder = item.find('span');
+		input.css('padding-left', (placeholder.width() * 134 / 105) + 10);
+	}
+	function getTextWidth(text, font) {
+		let canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+		let context = canvas.getContext('2d');
+		context.font = font;
+		let metrics = context.measureText(text);
+		return metrics.width;
+	}
+	function popupCursor(current, e) {
+		if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			let pos = current.offset();
+			let cursor = $('.popup__cursor');
+			let cursor_width = parseInt(cursor.css('width'));
+			let X = e.pageX;
+			let Y = e.pageY;
+			let x = pos.left;
+			let y = pos.top;
+			x = X - x;
+			y = Y - y;
+			if (x < cursor_width) x = cursor_width;
+			if (x > $(document).width() - cursor_width) x = $(document).width() - cursor_width;
+			if (y < cursor_width) y = cursor_width;
+			if (y > $(document).height() - cursor_width) y = $(document).height() - cursor_width;
+			cursor.css({
+				'left': x,
+				'top': y,
+			});
+		}
 	}
 });
