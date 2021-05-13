@@ -17,7 +17,7 @@ $(document).ready(function(){
 		$(this).toggleClass('_active');
 		$('.burger__content').toggleClass('_active');
 		$('.header').toggleClass('_active-burger');
-		if ($('.header').hasClass('_active-burger')) {
+		if ($('.header').hasClass('_active-burger') && $(document).width() > 992) {
 			$('body').on('mousemove', function(e) {
 				let pos = $('.burger__big-word').offset();
 				let width = $('.burger__big-word').width();
