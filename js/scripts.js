@@ -182,6 +182,9 @@ function move(){
 //Вызываем функцию
 move();
 */;
+$(window).on('load', function() {
+	$('.preloader').addClass('_active');
+});
 $(document).ready(function(){
 	$('.burger__btn').on('click', function() {
 		$('body').toggleClass('_lock');
