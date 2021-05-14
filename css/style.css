@@ -791,7 +791,7 @@ body._lock {
 }
 
 .popup__cursor {
-  position: absolute;
+  position: fixed;
   z-index: 1;
   width: 12px;
   height: 12px;
@@ -809,6 +809,11 @@ body._lock {
           animation: popup-cursor-reverse 2s forwards;
 }
 
+.popup__cursor._mobile {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .popup__cursor._close {
   -webkit-transition: width 1s, height 1s, background 1s, border 1s;
   -o-transition: width 1s, height 1s, background 1s, border 1s;
@@ -823,6 +828,8 @@ body._lock {
 }
 
 .popup__cursor._disable {
+  opacity: 1;
+  visibility: visible;
   -webkit-transition: 1s;
   -o-transition: 1s;
   transition: 1s;

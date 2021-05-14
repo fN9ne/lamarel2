@@ -255,6 +255,11 @@ $(document).ready(function(){
 	$('.popup__close').on('mouseleave', function() {
 		$('.popup__cursor').removeClass('_close');
 	});
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		$('.popup__cursor').addClass('_mobile');
+	} else {
+		$('.popup__cursor').removeClass('_mobile');
+	}
 	$('.popup__input').find('input, textarea').on('focus blur input', function() {
 		let line = $(this).closest('.popup__input').find('.popup__input-line');
 		let cursor = $('.popup__cursor');
@@ -266,6 +271,19 @@ $(document).ready(function(){
 		let text = $(this).val();
 		if (!text) text = '';
 		let width_text = getTextWidth(text, $(this).css('font'));
+		let curr_id = $(this).closest('.popup__input').index();
+		$(window).on('resize', function() {
+			changePos(curr_id);
+		});
+		function changePos(curr_id) {
+			pos = $('.popup__input').eq(curr_id).find('input, textarea').offset();
+			x = pos.left;
+			y = pos.top;
+			cursor.css({
+				'left': x + width,
+				'top': y + height + $('.popup').scrollTop(),
+			});
+		}
 		if ($(this).is(':focus')) {
 			$(this).closest('.popup__input').addClass('_active');
 			cursor.addClass('_disable');
