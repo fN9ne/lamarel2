@@ -676,7 +676,9 @@ body._lock {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   pointer-events: none;
-  display: none;
+  /* aboba */
+  -webkit-filter: blur(75px);
+          filter: blur(75px);
 }
 
 .popup {
@@ -1111,11 +1113,12 @@ body._lock {
 }
 
 .preloader._active {
-  opacity: 0;
   -webkit-transition: .5s 8s;
   -o-transition: .5s 8s;
   transition: .5s 8s;
+  opacity: 0;
   visibility: hidden;
+  z-index: -1;
 }
 
 .preloader._active * {
