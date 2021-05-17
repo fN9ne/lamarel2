@@ -154,16 +154,6 @@ body._lock {
   transition: all 1s;
 }
 
-.header._active-burger {
-  -webkit-transition: -webkit-backdrop-filter .3s linear 0s;
-  transition: -webkit-backdrop-filter .3s linear 0s;
-  -o-transition: backdrop-filter .3s linear 0s;
-  transition: backdrop-filter .3s linear 0s;
-  transition: backdrop-filter .3s linear 0s, -webkit-backdrop-filter .3s linear 0s;
-  -webkit-backdrop-filter: blur(0px);
-          backdrop-filter: blur(0px);
-}
-
 .header._blur {
   -webkit-transition: -webkit-backdrop-filter 1s linear;
   transition: -webkit-backdrop-filter 1s linear;
@@ -184,7 +174,7 @@ body._lock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-width: 1800px;
+  max-width: 1778px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -196,6 +186,9 @@ body._lock {
   font-size: 30px;
   color: #fff;
   text-transform: uppercase;
+  -webkit-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
 }
 
 .header__content {
@@ -265,6 +258,63 @@ body._lock {
   left: 0;
   top: 0;
   height: 1px;
+}
+
+.header._dark {
+  border-bottom: 1px solid #1e1e1e;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  -webkit-transition: -webkit-backdrop-filter 1s linear;
+  transition: -webkit-backdrop-filter 1s linear;
+  -o-transition: backdrop-filter 1s linear;
+  transition: backdrop-filter 1s linear;
+  transition: backdrop-filter 1s linear, -webkit-backdrop-filter 1s linear;
+}
+
+.header._dark .header__logo {
+  color: #121212;
+}
+
+.header._dark .header__btn {
+  background: #121212;
+  color: #fff;
+}
+
+.header._dark .header__btn i {
+  background: #121212;
+}
+
+.header._dark .burger__btn:before,
+.header._dark .burger__btn:after {
+  background: #121212;
+}
+
+.header._active-burger {
+  -webkit-transition: -webkit-backdrop-filter .3s linear 0s;
+  transition: -webkit-backdrop-filter .3s linear 0s;
+  -o-transition: backdrop-filter .3s linear 0s;
+  transition: backdrop-filter .3s linear 0s;
+  transition: backdrop-filter .3s linear 0s, -webkit-backdrop-filter .3s linear 0s;
+  -webkit-backdrop-filter: blur(0px);
+          backdrop-filter: blur(0px);
+}
+
+.header._active-burger .header__logo {
+  color: #fff;
+}
+
+.header._active-burger .header__btn {
+  background: #fff;
+  color: #121212;
+}
+
+.header._active-burger .header__btn i {
+  background: #fff;
+}
+
+.header._active-burger .burger__btn:before,
+.header._active-burger .burger__btn:after {
+  background: #fff;
 }
 
 .burger__btn {
@@ -1348,6 +1398,11 @@ body._lock {
     -webkit-transition: width .3s 1.2s;
     -o-transition: width .3s 1.2s;
     transition: width .3s 1.2s;
+  }
+
+  .header._dark .header__btn:hover,
+  .header._dark .header__btn:focus {
+    background: #18A9FF;
   }
 
   .burger__btn:hover:after,
