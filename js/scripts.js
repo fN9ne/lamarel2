@@ -375,7 +375,6 @@ $(document).ready(function(){
 		centeredSlides: true,
 		loop: true,
 		speed: 500,
-		grabCursor: true,
 		navigation: {
 			nextEl: '.services__next',
 			prevEl: '.services__prev',
@@ -430,32 +429,48 @@ $(document).ready(function(){
 	$(window).on('load resize', function () {
 		let adg = $('.advantages').offset().top;
 		let clients = $('.clients').offset().top;
+		let services = $('.services').offset().top;
 		let types = $('.types').offset().top;
 		let scroll = $(window).scrollTop();
+		let welcome = parseInt($('.welcome').css('height'));
+		if (scroll < welcome) {
+			$('.header').removeClass('_dark');
+			$('.header').addClass('_lbb');
+			$('.header').addClass('_wob');
+		}
+		if (scroll > services - 60) {
+			$('.header').addClass('_dark');
+			$('.header').removeClass('_lbb');
+			$('.header').removeClass('_wob');
+		}
 		if (scroll > adg - 60) {
 			$('.header').removeClass('_dark');
 			$('.header').addClass('_lbb');
-		} else {
-			$('.header').addClass('_dark');
-			$('.header').removeClass('_lbb');
+			$('.header').removeClass('_wob');
 		}
 		if (scroll > clients - 60) {
 			$('.header').addClass('_dark');
 			$('.header').removeClass('_lbb');
+			$('.header').removeClass('_wob');
 		}
 		if (scroll > types - 60) {
 			$('.header').removeClass('_dark');
 			$('.header').addClass('_lbb');
+			$('.header').removeClass('_wob');
 		}
 		$(window).on('scroll', function() {
 			scroll = $(window).scrollTop();
-			if (scroll > adg - 60) {
+			if (scroll < welcome) {
 				$('.header').removeClass('_dark');
 				$('.header').addClass('_lbb');
 			}
-			else {
+			if (scroll > services - 60) {
 				$('.header').addClass('_dark');
 				$('.header').removeClass('_lbb');
+			}
+			if (scroll > adg - 60) {
+				$('.header').removeClass('_dark');
+				$('.header').addClass('_lbb');
 			}
 			if (scroll > clients - 60) {
 				$('.header').addClass('_dark');
