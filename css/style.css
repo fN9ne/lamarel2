@@ -128,7 +128,7 @@ body._lock {
 
 .header {
   padding: 30px 0;
-  z-index: 5;
+  z-index: 9;
   position: fixed;
   top: 0;
   left: 0;
@@ -182,10 +182,12 @@ body._lock {
 
 .header__logo {
   position: relative;
-  font-weight: 900;
-  font-size: 30px;
-  color: #fff;
-  text-transform: uppercase;
+  -webkit-transform-origin: left center;
+      -ms-transform-origin: left center;
+          transform-origin: left center;
+}
+
+.header__logo svg path {
   -webkit-transition: .5s;
   -o-transition: .5s;
   transition: .5s;
@@ -261,7 +263,6 @@ body._lock {
 }
 
 .header._lbb {
-  border-bottom: 1px solid #fff;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   -webkit-transition: -webkit-backdrop-filter 1s linear;
@@ -272,7 +273,6 @@ body._lock {
 }
 
 .header._dark {
-  border-bottom: 1px solid #1e1e1e;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
   -webkit-transition: -webkit-backdrop-filter 1s linear;
@@ -282,8 +282,8 @@ body._lock {
   transition: backdrop-filter 1s linear, -webkit-backdrop-filter 1s linear;
 }
 
-.header._dark .header__logo {
-  color: #121212;
+.header._dark .header__logo svg path {
+  fill: #121212;
 }
 
 .header._dark .header__btn {
@@ -298,6 +298,11 @@ body._lock {
 .header._dark .burger__btn:before,
 .header._dark .burger__btn:after {
   background: #121212;
+}
+
+.header._wob {
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
 }
 
 .header._active-burger {
@@ -394,7 +399,7 @@ body._lock {
   top: 0;
   left: 0;
   height: 100%;
-  z-index: 4;
+  z-index: 8;
   overflow: auto;
   width: 100%;
   display: -webkit-box;
@@ -657,7 +662,7 @@ body._lock {
   content: '';
   width: 0px;
   height: 2px;
-  background: #18A9FF;
+  background: #9937E5;
   position: absolute;
   left: 0;
   top: 50%;
@@ -720,7 +725,7 @@ body._lock {
   -ms-flex-item-align: center;
       align-self: center;
   font-weight: 900;
-  color: #18A9FF;
+  color: #9937E5;
   position: relative;
 }
 
@@ -754,7 +759,7 @@ body._lock {
   left: 100%;
   top: 2px;
   border: 5px solid transparent;
-  border-left: 9px solid #18A9FF;
+  border-left: 9px solid #9937E5;
 }
 
 .popup {
@@ -880,7 +885,7 @@ body._lock {
   -o-transition: 0.3s all ease;
   transition: 0.3s all ease;
   pointer-events: none;
-  background: #18A9FF;
+  background: #9937E5;
   -webkit-animation: popup-cursor-reverse 2s forwards;
           animation: popup-cursor-reverse 2s forwards;
 }
@@ -900,7 +905,7 @@ body._lock {
           animation: none;
   border-radius: 50%;
   background: transparent;
-  border: 2px solid #18A9FF;
+  border: 2px solid #9937E5;
 }
 
 .popup__cursor._disable {
@@ -1021,7 +1026,7 @@ body._lock {
 
 .popup button {
   width: 100%;
-  background: #33B3FF;
+  background: #9937E5;
   padding: calc(15px + 5 * ((100vw - 320px) / (1920 - 320)));
   font-size: calc(14px + 4 * ((100vw - 320px) / (1920 - 320)));
   font-weight: 500;
@@ -1042,7 +1047,7 @@ body._lock {
   -webkit-transform: translate(-50%, -50%) rotate(45deg);
       -ms-transform: translate(-50%, -50%) rotate(45deg);
           transform: translate(-50%, -50%) rotate(45deg);
-  background: #18A9FF;
+  background: #9937E5;
   -webkit-transition: 0.3s all ease;
   -o-transition: 0.3s all ease;
   transition: 0.3s all ease;
@@ -1131,7 +1136,7 @@ body._lock {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: #18A9FF;
+  background: #9937E5;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: .5s, opacity 0s .5s, visibility 0s .5s;
@@ -1153,7 +1158,7 @@ body._lock {
   right: 0;
   width: 0;
   height: 1px;
-  background: #18A9FF;
+  background: #9937E5;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: 0.3s all ease;
@@ -1256,7 +1261,7 @@ body._lock {
 @media (min-width: 992px) {
   .header__btn:hover,
   .header__btn:focus {
-    background: #18A9FF;
+    background: #9937E5;
     color: #fff;
   }
 
@@ -1294,7 +1299,7 @@ body._lock {
 
   .header._dark .header__btn:hover,
   .header._dark .header__btn:focus {
-    background: #18A9FF;
+    background: #9937E5;
   }
 
   .burger__btn:hover:after,
@@ -1330,7 +1335,7 @@ body._lock {
 
   .burger__menu ul li a:hover:before,
   .burger__menu ul li a:focus:before {
-    background: #18A9FF;
+    background: #9937E5;
     -webkit-transition: background .2s 0s;
     -o-transition: background .2s 0s;
     transition: background .2s 0s;
@@ -1405,6 +1410,12 @@ body._lock {
     padding: 20px 0;
   }
 
+  .header__logo {
+    -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+
   .burger__main {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1434,6 +1445,16 @@ body._lock {
 }
 
 @media (max-width: 425px) {
+  .header {
+    padding: 10px 0;
+  }
+
+  .header__logo {
+    -webkit-transform: scale(0.75);
+        -ms-transform: scale(0.75);
+            transform: scale(0.75);
+  }
+
   .footer__top {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
