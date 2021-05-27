@@ -370,11 +370,10 @@ $(document).ready(function(){
 		$('html, body').animate({scrollTop: typesOffset - parseInt($('.header').css('height'))}, 500, 'swing');
 	});
 
-	let mySlider = new Swiper('.services__content', {
-		slidesPerView: 5,
-		centeredSlides: true,
-		loop: true,
+	new Swiper('.services__slider', {
+		slidesPerView: 4,
 		speed: 500,
+		grabCursor: true,
 		navigation: {
 			nextEl: '.services__next',
 			prevEl: '.services__prev',
@@ -383,20 +382,16 @@ $(document).ready(function(){
 			320: {
 				slidesPerView: 1,
 			},
-			501: {
+			611: {
 				slidesPerView: 2,
 			},
-			768: {
+			993: {
 				slidesPerView: 3,
 			},
-			1281: {
-				slidesPerView: 5,
+			1381: {
+				slidesPerView: 4,
 			}
 		},
-	});
-	$('.service').on('click', function() {
-		let num = $(this).closest('.swiper-slide').index();
-		mySlider.slideTo(num, 500);
 	});
 
 	$(window).on('load resize', function() {
@@ -426,6 +421,20 @@ $(document).ready(function(){
 		return Math.max.apply(null, arr);
 	}
 
+	$(window).on('scroll resize', function() {
+		let scroll = $(window).scrollTop();
+		let services = $('.services').offset().top - document.documentElement.clientHeight / 2;
+		if (scroll > services) {
+			$('#star1').attr('transform', 'translate(0, 0) rotate(-45.7401 91.666 15.061)');
+			$('#star2').attr('transform', 'translate(0, 0) rotate(-45.7401 0 160.79)');
+			$('#star3').attr('transform', 'translate(0, 0) rotate(-45.7401 17 343.694)');
+			$('#star4').attr('transform', 'translate(0, 0) rotate(-45.7401 237.513 159.194)');
+			$('#star5').attr('transform', 'translate(0, 0) rotate(-45.7401 414 181.714)');
+			$('#star6').attr('transform', 'translate(0, 0) rotate(-45.7401 571 276.714)');
+			$('#star7').attr('transform', 'translate(0, 0) rotate(-45.7401 660 215.363)');
+		}
+	});
+
 	$(window).on('load resize', function () {
 		let adg = $('.advantages').offset().top;
 		let clients = $('.clients').offset().top;
@@ -439,23 +448,6 @@ $(document).ready(function(){
 			$('.header').addClass('_wob');
 		}
 		if (scroll > services - 60) {
-			$('.header').addClass('_dark');
-			$('.header').removeClass('_lbb');
-			$('.header').removeClass('_wob');
-		}
-		if (scroll > adg - 60) {
-			$('.header').removeClass('_dark');
-			$('.header').addClass('_lbb');
-			$('.header').removeClass('_wob');
-		}
-		if (scroll > clients - 60) {
-			$('.header').addClass('_dark');
-			$('.header').removeClass('_lbb');
-			$('.header').removeClass('_wob');
-		}
-		if (scroll > types - 60) {
-			$('.header').removeClass('_dark');
-			$('.header').addClass('_lbb');
 			$('.header').removeClass('_wob');
 		}
 		$(window).on('scroll', function() {
@@ -463,22 +455,10 @@ $(document).ready(function(){
 			if (scroll < welcome) {
 				$('.header').removeClass('_dark');
 				$('.header').addClass('_lbb');
+				$('.header').addClass('_wob');
 			}
 			if (scroll > services - 60) {
-				$('.header').addClass('_dark');
-				$('.header').removeClass('_lbb');
-			}
-			if (scroll > adg - 60) {
-				$('.header').removeClass('_dark');
-				$('.header').addClass('_lbb');
-			}
-			if (scroll > clients - 60) {
-				$('.header').addClass('_dark');
-				$('.header').removeClass('_lbb');
-			}
-			if (scroll > types - 60) {
-				$('.header').removeClass('_dark');
-				$('.header').addClass('_lbb');
+				$('.header').removeClass('_wob');
 			}
 		});
 	});
@@ -499,5 +479,4 @@ $(document).ready(function(){
 			}
 		}
 	});
-
 });
