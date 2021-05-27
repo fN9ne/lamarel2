@@ -126,6 +126,18 @@ body._lock {
   overflow: hidden;
 }
 
+.label {
+  font-weight: 500;
+  font-size: calc(12px + 3 * ((100vw - 320px) / (1920 - 320)));
+  color: #fff;
+  line-height: 152%;
+  position: absolute;
+  text-transform: uppercase;
+  display: block;
+  bottom: calc(20px + 65 * ((100vw - 768px) / (1920 - 320)));
+  right: calc(20px + 215 * ((100vw - 768px) / (1920 - 320)));
+}
+
 .header {
   padding: 30px 0;
   z-index: 9;
@@ -187,7 +199,8 @@ body._lock {
           transform-origin: left center;
 }
 
-.header__logo svg path {
+.header__logo svg path,
+.header__logo svg rect {
   -webkit-transition: .5s;
   -o-transition: .5s;
   transition: .5s;
@@ -282,7 +295,8 @@ body._lock {
   transition: backdrop-filter 1s linear, -webkit-backdrop-filter 1s linear;
 }
 
-.header._dark .header__logo svg path {
+.header._dark .header__logo svg path,
+.header._dark .header__logo svg rect {
   fill: #121212;
 }
 
@@ -1166,6 +1180,10 @@ body._lock {
   transition: 0.3s all ease;
 }
 
+.footer {
+  background: #111319;
+}
+
 .footer__container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1232,7 +1250,8 @@ body._lock {
   transition: 0.3s all ease;
 }
 
-.footer__socials li a svg path {
+.footer__socials li a svg path,
+.footer__socials li a svg rect {
   -webkit-transition: 0.3s all ease;
   -o-transition: 0.3s all ease;
   transition: 0.3s all ease;
@@ -1251,11 +1270,168 @@ body._lock {
 }
 
 .footer__bottom {
-  padding: 20px 0 calc(40px + 40 * ((100vw - 320px) / (1920 - 320)));
+  padding: 20px 0 calc(20px + 20 * ((100vw - 320px) / (1920 - 320)));
   color: #fff;
   font-size: 15px;
   line-height: calc(18/15);
   text-align: center;
+}
+
+.scroll-arrow {
+  width: 40px;
+  height: 40px;
+  bottom: 45px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  position: absolute;
+  z-index: 2;
+}
+
+.scroll-arrow:before {
+  content: '';
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  background: #121212;
+  left: 20px;
+  top: 0;
+  animation: scroll-arrow 2s linear infinite reverse;
+}
+
+@-webkit-keyframes scroll-arrow {
+  0% {
+    height: 100%;
+    top: 0;
+    bottom: auto;
+  }
+
+  20% {
+    height: 0;
+    top: 0;
+    bottom: auto;
+  }
+
+  21% {
+    height: 0;
+    bottom: 0;
+    top: auto;
+  }
+
+  40%, 100% {
+    height: 100%;
+    bottom: 0;
+    top: auto;
+  }
+}
+
+@keyframes scroll-arrow {
+  0% {
+    height: 100%;
+    top: 0;
+    bottom: auto;
+  }
+
+  20% {
+    height: 0;
+    top: 0;
+    bottom: auto;
+  }
+
+  21% {
+    height: 0;
+    bottom: 0;
+    top: auto;
+  }
+
+  40%, 100% {
+    height: 100%;
+    bottom: 0;
+    top: auto;
+  }
+}
+
+.subtitle {
+  font-size: calc(12px + 3 * ((100vw - 320px) / (1920 - 320)));
+  font-weight: 500;
+  color: #fff;
+  line-height: 152%;
+  padding: 0 0 0 45px;
+  position: relative;
+  text-transform: uppercase;
+  margin: 0 0 30px 0;
+}
+
+.subtitle:before {
+  content: '';
+  width: 25px;
+  height: 1px;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-animation: subtitle 10s infinite;
+          animation: subtitle 10s infinite;
+}
+
+.subtitle_black {
+  color: #121212;
+}
+
+.subtitle_black:before {
+  background: #121212;
+}
+
+@-webkit-keyframes subtitle {
+  0%, 20%, 100% {
+    width: 25px;
+    left: 0;
+  }
+
+  10% {
+    width: 0;
+    left: 25px;
+  }
+}
+
+@keyframes subtitle {
+  0%, 20%, 100% {
+    width: 25px;
+    left: 0;
+  }
+
+  10% {
+    width: 0;
+    left: 25px;
+  }
+}
+
+.title {
+  font-size: calc(30px + 45 * ((100vw - 320px) / (1920 - 320)));
+  font-weight: bold;
+  line-height: 152%;
+  color: #fff;
+}
+
+.title_black {
+  color: #121212;
+}
+
+.title span {
+  color: #9937E5;
+}
+
+.desc {
+  line-height: 160%;
+  font-weight: 400;
+  font-size: calc(15px + 3 * ((100vw - 320px) / (1920 - 320)));
+  color: #fff;
+  opacity: 0.8;
+}
+
+.desc_small {
+  font-size: calc(13px + 2 * ((100vw - 320px) / (1920 - 320)));
 }
 
 @media (min-width: 992px) {
@@ -1395,7 +1571,9 @@ body._lock {
   }
 
   .footer__socials li a:hover svg path,
-  .footer__socials li a:focus svg path {
+  .footer__socials li a:hover svg rect,
+  .footer__socials li a:focus svg path,
+  .footer__socials li a:focus svg rect {
     fill: #fff;
   }
 }
@@ -1404,6 +1582,10 @@ body._lock {
   ._container {
     max-width: 1120px;
     padding: 0px 10px;
+  }
+
+  .label {
+    display: none;
   }
 
   .header {
