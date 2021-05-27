@@ -415,6 +415,14 @@ $(document).ready(function(){
 			el: '.advantages__bullets',
 			clickable: true,
 		},
+		breakpoints: {
+			526: {
+				allowTouchMove: true,
+			},
+			320: {
+				allowTouchMove: false,
+			},
+		},
 	});
 
 	function maxArray(arr) {
