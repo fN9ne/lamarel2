@@ -373,7 +373,6 @@ $(document).ready(function(){
 	new Swiper('.services__slider', {
 		slidesPerView: 4,
 		speed: 500,
-		grabCursor: true,
 		navigation: {
 			nextEl: '.services__next',
 			prevEl: '.services__prev',
