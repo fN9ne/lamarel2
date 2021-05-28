@@ -306,8 +306,8 @@
           transform: rotate(40deg) translateY(250%);
   left: 25%;
   bottom: 65%;
-  -webkit-animation: rocket2 10s linear infinite;
-          animation: rocket2 10s linear infinite;
+  -webkit-animation: rocket2 10s linear infinite 1s;
+          animation: rocket2 10s linear infinite 1s;
 }
 
 .welcome__rocket_3 {
@@ -316,8 +316,8 @@
   -webkit-transform: rotate(55deg) translateY(300%);
       -ms-transform: rotate(55deg) translateY(300%);
           transform: rotate(55deg) translateY(300%);
-  -webkit-animation: rocket3 10s linear infinite;
-          animation: rocket3 10s linear infinite;
+  -webkit-animation: rocket3 10s linear infinite 1.3s;
+          animation: rocket3 10s linear infinite 1.3s;
 }
 
 @-webkit-keyframes rocket2 {
@@ -680,15 +680,12 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transition: 0.3s all ease;
-  -o-transition: 0.3s all ease;
-  transition: 0.3s all ease;
 }
 
 .service:nth-child(odd) .service__wrapper {
-  background: -webkit-gradient(linear, left top, left bottom, from(#181B25), color-stop(137.16%, #111319));
-  background: -o-linear-gradient(top, #181B25 0%, #111319 137.16%);
-  background: linear-gradient(180deg, #181B25 0%, #111319 137.16%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#181B25), color-stop(50.1%, #111319), color-stop(50.2%, #080A12), to(#080A12));
+  background-image: -o-linear-gradient(top, #181B25 0%, #111319 50.1%, #080A12 50.2%, #080A12 100%);
+  background-image: linear-gradient(180deg, #181B25 0%, #111319 50.1%, #080A12 50.2%, #080A12 100%);
 }
 
 .service:nth-child(odd) .service__icon {
@@ -696,7 +693,9 @@
 }
 
 .service:nth-child(even) .service__wrapper {
-  background: #080A12;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#181B25), color-stop(50.1%, #111319), color-stop(50.2%, #080A12), to(#080A12));
+  background-image: -o-linear-gradient(bottom, #181B25 0%, #111319 50.1%, #080A12 50.2%, #080A12 100%);
+  background-image: linear-gradient(0deg, #181B25 0%, #111319 50.1%, #080A12 50.2%, #080A12 100%);
 }
 
 .service:nth-child(even) .service__icon {
@@ -704,6 +703,9 @@
 }
 
 .service__wrapper {
+  -webkit-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
   padding: calc(35px + 20 * ((100vw - 610px) / (1920 - 610))) calc(35px + 20 * ((100vw - 610px) / (1920 - 610))) calc(20px + 65 * ((100vw - 610px) / (1920 - 610)));
   display: -webkit-box;
   display: -ms-flexbox;
@@ -717,6 +719,7 @@
           align-items: center;
   text-align: center;
   height: 100%;
+  background-size: 100% 200%;
 }
 
 .service__icon {
@@ -740,6 +743,9 @@
 }
 
 .service__name {
+  -webkit-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  transition: 0.3s all ease;
   font-weight: 500;
   font-size: calc(20px + 5 * ((100vw - 320px) / (1920 - 320)));
   line-height: 112%;
@@ -1000,7 +1006,7 @@
 }
 
 .advantages-work__content {
-  padding: 0 10px calc(20px + 10 * ((100vw - 768px) / (1920 - 768))) calc(20px + 10 * ((100vw - 768px) / (1920 - 768)));
+  padding: 0 calc(20px + 10 * ((100vw - 768px) / (1920 - 768))) calc(20px + 10 * ((100vw - 768px) / (1920 - 768)));
   background: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1263,10 +1269,6 @@
 
 .client {
   height: 360px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#181B25), color-stop(50.1%, #111319), color-stop(50.2%, #080A12), to(#080A12));
-  background: -o-linear-gradient(top, #181B25 0%, #111319 50.1%, #080A12 50.2%, #080A12 100%);
-  background: linear-gradient(180deg, #181B25 0%, #111319 50.1%, #080A12 50.2%, #080A12 100%);
-  background-size: 100% 200%;
   width: 100%;
   position: relative;
   display: -webkit-box;
@@ -1278,6 +1280,10 @@
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  background: -webkit-gradient(linear, left top, left bottom, from(#181B25), color-stop(50.1%, #111319), color-stop(50.2%, #080A12), to(#080A12));
+  background: -o-linear-gradient(top, #181B25 0%, #111319 50.1%, #080A12 50.2%, #080A12 100%);
+  background: linear-gradient(180deg, #181B25 0%, #111319 50.1%, #080A12 50.2%, #080A12 100%);
+  background-size: 100% 200%;
   -webkit-transition: .5s;
   -o-transition: .5s;
   transition: .5s;
@@ -1768,6 +1774,32 @@
     background: #9937E5;
   }
 
+  .service:nth-child(odd) .service__wrapper:hover,
+  .service:nth-child(odd) .service__wrapper:focus {
+    background-position: center bottom;
+  }
+
+  .service:nth-child(odd) .service__wrapper:hover .service__name,
+  .service:nth-child(odd) .service__wrapper:focus .service__name {
+    -webkit-transition: .3s .5s;
+    -o-transition: .3s .5s;
+    transition: .3s .5s;
+    color: #fff;
+  }
+
+  .service:nth-child(even) .service__wrapper:hover,
+  .service:nth-child(even) .service__wrapper:focus {
+    background-position: center bottom;
+  }
+
+  .service:nth-child(even) .service__wrapper:hover .service__name,
+  .service:nth-child(even) .service__wrapper:focus .service__name {
+    -webkit-transition: .3s .5s;
+    -o-transition: .3s .5s;
+    transition: .3s .5s;
+    color: #fff;
+  }
+
   .service__btn:hover:before {
     -webkit-animation: services-btn 1.5s;
             animation: services-btn 1.5s;
@@ -1797,6 +1829,7 @@
 
   .advantages-work:hover .advantages-work__name:before,
   .advantages-work:focus .advantages-work__name:before {
+    width: 100%;
     background: #9937E5;
   }
 
@@ -1998,13 +2031,13 @@
   }
 
   .welcome__rocket_2 {
-    -webkit-animation: rocket2 5s linear infinite;
-            animation: rocket2 5s linear infinite;
+    -webkit-animation: rocket2 5s linear infinite 1s;
+            animation: rocket2 5s linear infinite 1s;
   }
 
   .welcome__rocket_3 {
-    -webkit-animation: rocket3 5s linear infinite;
-            animation: rocket3 5s linear infinite;
+    -webkit-animation: rocket3 5s linear infinite 1.3s;
+            animation: rocket3 5s linear infinite 1.3s;
   }
 
   .welcome__label {
