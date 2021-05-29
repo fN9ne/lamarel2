@@ -1353,7 +1353,7 @@ body._lock {
 }
 
 .subtitle {
-  font-size: calc(12px + 3 * ((100vw - 320px) / (1920 - 320)));
+  font-size: calc(12px + 6 * ((100vw - 320px) / (1920 - 320)));
   font-weight: 500;
   color: #fff;
   line-height: 152%;
