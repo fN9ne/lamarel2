@@ -2368,18 +2368,18 @@
   }
 
   .service.swiper-slide-prev {
-    -webkit-transform: translateX(110px) scale(0.8);
-        -ms-transform: translateX(110px) scale(0.8);
-            transform: translateX(110px) scale(0.8);
+    -webkit-transform: translateX(calc(30px + 250 * ((100vw - 320px) / (610 - 320)))) scale(0.8);
+        -ms-transform: translateX(calc(30px + 250 * ((100vw - 320px) / (610 - 320)))) scale(0.8);
+            transform: translateX(calc(30px + 250 * ((100vw - 320px) / (610 - 320)))) scale(0.8);
     -webkit-transform-origin: center right;
         -ms-transform-origin: center right;
             transform-origin: center right;
   }
 
   .service.swiper-slide-next {
-    -webkit-transform: translateX(-110px) scale(0.8);
-        -ms-transform: translateX(-110px) scale(0.8);
-            transform: translateX(-110px) scale(0.8);
+    -webkit-transform: translateX(calc(-30px + -250 * ((100vw - 320px) / (610 - 320)))) scale(0.8);
+        -ms-transform: translateX(calc(-30px + -250 * ((100vw - 320px) / (610 - 320)))) scale(0.8);
+            transform: translateX(calc(-30px + -250 * ((100vw - 320px) / (610 - 320)))) scale(0.8);
   }
 
   .service__wrapper {
