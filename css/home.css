@@ -303,10 +303,10 @@
   -webkit-transform: rotate(40deg) translateY(250%);
       -ms-transform: rotate(40deg) translateY(250%);
           transform: rotate(40deg) translateY(250%);
-  left: 25%;
-  bottom: 65%;
-  -webkit-animation: rocket2 10s linear infinite 2s;
-          animation: rocket2 10s linear infinite 2s;
+  left: calc(-100px + 400 * ((100vw - 320px) / (1920 - 320)));
+  bottom: calc(0px + 500 * ((100vw - 320px) / (1920 - 320)));
+  -webkit-animation: rocket2 10s linear infinite 1s;
+          animation: rocket2 10s linear infinite 1s;
 }
 
 .welcome__rocket_3 {
@@ -315,8 +315,8 @@
   -webkit-transform: rotate(55deg) translateY(300%);
       -ms-transform: rotate(55deg) translateY(300%);
           transform: rotate(55deg) translateY(300%);
-  -webkit-animation: rocket3 10s linear infinite 2s;
-          animation: rocket3 10s linear infinite 2s;
+  -webkit-animation: rocket3 10s linear infinite 1s;
+          animation: rocket3 10s linear infinite 1s;
 }
 
 .welcome__sidebar {
@@ -2064,8 +2064,8 @@
   }
 
   30%, 100% {
-    -webkit-transform: rotate(40deg) translateY(-650%);
-            transform: rotate(40deg) translateY(-650%);
+    -webkit-transform: rotate(40deg) translateY(-1250%);
+            transform: rotate(40deg) translateY(-1250%);
   }
 }
 
@@ -2076,8 +2076,8 @@
   }
 
   30%, 100% {
-    -webkit-transform: rotate(40deg) translateY(-650%);
-            transform: rotate(40deg) translateY(-650%);
+    -webkit-transform: rotate(40deg) translateY(-1250%);
+            transform: rotate(40deg) translateY(-1250%);
   }
 }
 
@@ -2396,13 +2396,13 @@
   }
 
   .welcome__rocket_2 {
-    -webkit-animation: rocket2 5s linear infinite 2s;
-            animation: rocket2 5s linear infinite 2s;
+    -webkit-animation: rocket2 5s linear infinite 1s;
+            animation: rocket2 5s linear infinite 1s;
   }
 
   .welcome__rocket_3 {
-    -webkit-animation: rocket3 5s linear infinite 2s;
-            animation: rocket3 5s linear infinite 2s;
+    -webkit-animation: rocket3 5s linear infinite 1s;
+            animation: rocket3 5s linear infinite 1s;
   }
 
   .welcome__label {
