@@ -2765,13 +2765,6 @@
             justify-content: center;
   }
 
-  .advantages__portfolio-btn:after {
-    left: 50%;
-    -webkit-transform: translate(-50%, 0);
-        -ms-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
-  }
-
   .advantages-work {
     margin: 0 20px 20px 0;
     -webkit-box-flex: 0;

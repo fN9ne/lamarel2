@@ -188,6 +188,15 @@ $(window).on('load', function() {
 	$('.preloader').addClass('_active');
 });
 $(document).ready(function(){
+
+	mainBlockHeight();
+
+	function mainBlockHeight() {
+		let height = $(window).height();
+		let screen = $('.welcome');
+		screen.css('height', height);
+	}
+
 	$('.burger__btn').on('click', function() {
 		$('body').toggleClass('_lock');
 		$(this).toggleClass('_active');
