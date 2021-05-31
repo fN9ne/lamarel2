@@ -34,128 +34,25 @@ if (animItems.length > 0) {
 	}
 	animOnScroll();
 };
-$(window).on('load', function() {
-	$('.preloader').addClass('_active');
+$(document).ready(function() {
 
 	mainBlockHeight();
-
-	function mainBlockHeight() {
-		let height = $(window).height();
-		let screen = $('.welcome');
-		screen.css('height', height);
-	}
-
-	const adg_work = $('.advantages-work');
-	if (adg_work.length > 0) {
-		for (let i = 0; i < adg_work.length; i++) {
-			let color = adg_work.eq(i).attr('data-color') || '#fff';
-			let image = adg_work.eq(i).find('.advantages-work__image');
-			image.css('background', color);
-		}
-	}
-
-	$('.prices__tabs li').on('click', function() {
-		let current;
-		let typesOffset = $('.types').offset().top;
-		if (!$(this).hasClass('_current')) {
-			current = $('.prices__tabs li._current');
-			current.removeClass('_current');
-			if (current.attr('class').length === 0) current.removeAttr('class');
-			$(this).addClass('_current');
-			$('.types__content').removeClass('_current');
-			$('.types__content').eq($(this).index()).addClass('_current');
-		}
-		$('html, body').animate({scrollTop: typesOffset - parseInt($('.header').css('height'))}, 500, 'swing');
-	});
-
-	$('.services__slider-container').slick({
-		speed: 250,
-		slidesToShow: 4,
-		infinite: false,
-		appendArrows: '.services__navigation',
-		nextArrow: '<button type="button" class="services__arrow services__next">след.</button>',
-		prevArrow: '<button type="button" class="services__arrow services__prev">пред.</button>',
-		responsive: [
-			{
-				breakpoint: 1381,
-				settings: {
-					slidesToShow: 3,
-				},
-			},
-			{
-				breakpoint: 993,
-				settings: {
-					slidesToShow: 2,
-				},
-			},
-			{
-				breakpoint: 611,
-				settings: {
-					slidesToShow: 1,
-				},
-			},
-		],
-	});
-
-	/*new Swiper('.services__slider', {
-		slidesPerView: 4,
-		speed: 500,
-		navigation: {
-			nextEl: '.services__next',
-			prevEl: '.services__prev',
-		},
-		breakpoints: {
-			320: {
-				slidesPerView: 1,
-			},
-			611: {
-				slidesPerView: 2,
-			},
-			993: {
-				slidesPerView: 3,
-			},
-			1381: {
-				slidesPerView: 4,
+	$(document).on('scroll', function() {
+		let types = $('.types').offset().top;
+		let h = document.documentElement.clientHeight;
+		let label = $('.types__label');
+		let scroll = $(window).scrollTop();
+		let typesHeight = $('.types').css('height');
+		typesHeight = parseInt(typesHeight);
+		label.css('bottom', typesHeight - 50);
+		let scrolled = scroll - (types - h + 50);
+		if (scrolled > 0) {
+			label.css('bottom', typesHeight - 30 - scrolled);
+			if (typesHeight - 30 - scrolled < 70) {
+				label.css('bottom', 70);
 			}
-		},
-	});*/
-
-	$(window).on('load resize', function() {
-		let slides_height = [];
-		for (let i = 0; i < $('.advantage__wrapper').length; i++) {
-			let item = $('.advantage__wrapper').eq(i);
-			slides_height[i] = parseFloat(item.css('height'));
 		}
-		$('.advantages__slider-container').css('height', maxArray(slides_height));
 	});
-
-	new Swiper('.advantages__slider-container', {
-		observer: true,
-		grabCursor: true,
-		slidesPerView: 1,
-		direction: 'vertical',
-		navigation: {
-			nextEl: '.advantages__next',
-			prevEl: '.advantages__prev',
-		},
-		pagination: {
-			el: '.advantages__bullets',
-			clickable: true,
-		},
-		breakpoints: {
-			526: {
-				allowTouchMove: true,
-			},
-			320: {
-				allowTouchMove: false,
-			},
-		},
-	});
-
-	function maxArray(arr) {
-		return Math.max.apply(null, arr);
-	}
-
 	$(window).on('scroll resize', function() {
 		let scroll = $(window).scrollTop();
 		let services = $('.services').offset().top - document.documentElement.clientHeight / 2;
@@ -169,7 +66,6 @@ $(window).on('load', function() {
 			$('#star7').attr('transform', 'translate(0, 0) rotate(-45.7401 660 215.363)');
 		}
 	});
-
 	$(window).on('load resize', function () {
 		let adg = $('.advantages').offset().top;
 		let clients = $('.clients').offset().top;
@@ -197,21 +93,95 @@ $(window).on('load', function() {
 			}
 		});
 	});
-
-	$(document).on('scroll', function() {
-		let types = $('.types').offset().top;
-		let h = document.documentElement.clientHeight;
-		let label = $('.types__label');
-		let scroll = $(window).scrollTop();
-		let typesHeight = $('.types').css('height');
-		typesHeight = parseInt(typesHeight);
-		label.css('bottom', typesHeight - 50);
-		let scrolled = scroll - (types - h + 50);
-		if (scrolled > 0) {
-			label.css('bottom', typesHeight - 30 - scrolled);
-			if (typesHeight - 30 - scrolled < 70) {
-				label.css('bottom', 70);
-			}
+	const adg_work = $('.advantages-work');
+	if (adg_work.length > 0) {
+		for (let i = 0; i < adg_work.length; i++) {
+			let color = adg_work.eq(i).attr('data-color') || '#fff';
+			let image = adg_work.eq(i).find('.advantages-work__image');
+			image.css('background', color);
 		}
+	}
+	$('.prices__tabs li').on('click', function() {
+		let current;
+		let typesOffset = $('.types').offset().top;
+		if (!$(this).hasClass('_current')) {
+			current = $('.prices__tabs li._current');
+			current.removeClass('_current');
+			if (current.attr('class').length === 0) current.removeAttr('class');
+			$(this).addClass('_current');
+			$('.types__content').removeClass('_current');
+			$('.types__content').eq($(this).index()).addClass('_current');
+		}
+		$('html, body').animate({scrollTop: typesOffset - parseInt($('.header').css('height'))}, 500, 'swing');
 	});
+	$('.services__slider-container').slick({
+		speed: 250,
+		slidesToShow: 4,
+		infinite: false,
+		appendArrows: '.services__navigation',
+		nextArrow: '<button type="button" class="services__arrow services__next">след.</button>',
+		prevArrow: '<button type="button" class="services__arrow services__prev">пред.</button>',
+		responsive: [
+		{
+			breakpoint: 1381,
+			settings: {
+				slidesToShow: 3,
+			},
+		},
+		{
+			breakpoint: 993,
+			settings: {
+				slidesToShow: 2,
+			},
+		},
+		{
+			breakpoint: 611,
+			settings: {
+				slidesToShow: 1,
+			},
+		},
+		],
+	});
+	$(window).on('load resize', function() {
+		let slides_height = [];
+		for (let i = 0; i < $('.advantage__wrapper').length; i++) {
+			let item = $('.advantage__wrapper').eq(i);
+			slides_height[i] = parseFloat(item.css('height'));
+		}
+		$('.advantages__slider-container').css('height', maxArray(slides_height));
+	});
+	new Swiper('.advantages__slider-container', {
+		observer: true,
+		grabCursor: true,
+		slidesPerView: 1,
+		direction: 'vertical',
+		navigation: {
+			nextEl: '.advantages__next',
+			prevEl: '.advantages__prev',
+		},
+		pagination: {
+			el: '.advantages__bullets',
+			clickable: true,
+		},
+		breakpoints: {
+			526: {
+				allowTouchMove: true,
+			},
+			320: {
+				allowTouchMove: false,
+			},
+		},
+	});
+
+	// functions
+
+	function mainBlockHeight() {
+		let height = $(window).height();
+		let screen = $('.welcome');
+		screen.css('height', height);
+	}
+	function maxArray(arr) {
+		return Math.max.apply(null, arr);
+	}
+
 });
